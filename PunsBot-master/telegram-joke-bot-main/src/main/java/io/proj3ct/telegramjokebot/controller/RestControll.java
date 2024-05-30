@@ -80,4 +80,9 @@ public class RestControll {
         }
     }
 
+    @GetMapping("/rating")
+    public List<PuriPuns> getRating() {
+        return punService.ratPan();
+    }
+
 }
