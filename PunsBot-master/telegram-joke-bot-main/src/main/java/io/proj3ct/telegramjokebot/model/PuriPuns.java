@@ -25,5 +25,8 @@ public class PuriPuns {
 
     @Column(name="date_create")
     private Date dateCreate;
+    
+    @Column(name="rating")
+    private int rating;
 
 }
