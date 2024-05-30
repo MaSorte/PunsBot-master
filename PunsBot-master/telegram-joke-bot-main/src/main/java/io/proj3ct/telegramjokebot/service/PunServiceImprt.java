@@ -4,7 +4,6 @@ import io.proj3ct.telegramjokebot.model.PunRepository;
 import io.proj3ct.telegramjokebot.model.PuriPuns;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Optional;
 
 public class PunServiceImprt implements PunService{
@@ -22,11 +21,14 @@ public class PunServiceImprt implements PunService{
     public String getPunn() {
         List<PuriPuns> puns = punRepository.findAll();
         if (puns.isEmpty()) {
-            return "Извини, но у меня пока нет шуток!";
+            return "Извини, но у меня нет шуток!";
         } else if (currentPunIndex >= puns.size()) {
             currentPunIndex = 0; // если конец списка
         }
-        PuriPuns pun = puns.get(currentPunIndex); // получаем шутку. почему не функция с айди??? не забыть!
+        PuriPuns pun = puns.get(currentPunIndex);
+        pun.setRating(pun.getRating() + 1);
+        punRepository.save(pun);
+
         currentPunIndex++;
         return String.valueOf(pun);
     }
@@ -43,12 +45,17 @@ public class PunServiceImprt implements PunService{
 
     @Override
     public Optional<PuriPuns> getPunById(Long id) {
-        return punRepository.findById(id);
+        Optional<PuriPuns> pun = punRepository.findById(id);
+        if (pun.isPresent()) {
+            pun.get().setRating(pun.get().getRating() + 1); // Изменяем значение
+            punRepository.save(pun.get());
+        }
+        return pun;
     }
 
     @Override
-    public void ratPan(PuriPuns pun) {
-
+    public List<PuriPuns> ratPan() {
+        return punRepository.Top5ByRating();
     }
 
     @Override
@@ -60,13 +67,6 @@ public class PunServiceImprt implements PunService{
         } else {
             return false;
         }
-    }
-
-    //private final Random random = new Random();
-    @Override
-    public void rand_pun(int pp){
-        PuriPuns pun = new PuriPuns();
-        int randomIndex = new Random().nextInt(pp);
     }
 
 }
