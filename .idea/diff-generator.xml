@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DiffGenerationConfig">
+    <option name="snapshotDb" value="false" />
+    <option name="snapshotDbValue" value="8828b95f-279f-4d64-bee0-aa3d6698e398" />
+    <option name="snapshotModelValue" value="Default" />
+    <option name="updateChangeLogPath" value="PunsBot-master/telegram-joke-bot-main/src/main/resources/db/changelog/01-01-changelog.xml" />
+    <option name="updateDbConnectionName" value="8828b95f-279f-4d64-bee0-aa3d6698e398" />
+  </component>
+</project>

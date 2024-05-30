@@ -21,9 +21,7 @@ public interface PunService {
 
     Optional<PuriPuns> getPunById(Long id); // шутка по id
 
-    void ratPan(PuriPuns pun); //рейтинг шуток
+    List<PuriPuns> ratPan(); //рейтинг шуток
 
     boolean deletePun(Long id); // удалить шутку
-
-    void rand_pun(int pp); //выдать рандомную шутку
 }
