@@ -1,6 +1,6 @@
 package io.proj3ct.telegramjokebot.service;
 
-import io.proj3ct.telegramjokebot.model.PunRepository;
+import io.proj3ct.telegramjokebot.service.repos.PunRepository;
 import io.proj3ct.telegramjokebot.model.PuriPuns;
 
 import java.util.List;
@@ -19,6 +19,7 @@ public class PunServiceImprt implements PunService{
     private int currentPunIndex = 0;
     @Override
     public String getPunn() {
+
         List<PuriPuns> puns = punRepository.findAll();
         if (puns.isEmpty()) {
             return "Извини, но у меня нет шуток!";

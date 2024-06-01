@@ -1,17 +1,23 @@
 package io.proj3ct.telegramjokebot;
 
-import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.cache.annotation.EnableCaching;
+//import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+@EnableAspectJAutoProxy
+//@EnableFeignClients
+@EnableScheduling
+@EnableCaching
+@EnableTransactionManagement
 @SpringBootApplication
-@AutoConfigurationPackage
-public class TelegramBotApplication extends SpringBootServletInitializer {
-
+public class TelegramBotApplication {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext run = new SpringApplicationBuilder(TelegramBotApplication.class).run(args);
+        SpringApplication.run(TelegramBotApplication.class, args);
     }
+
 }

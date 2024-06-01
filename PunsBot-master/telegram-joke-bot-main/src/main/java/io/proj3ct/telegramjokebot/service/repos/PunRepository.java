@@ -1,5 +1,6 @@
-package io.proj3ct.telegramjokebot.model;
+package io.proj3ct.telegramjokebot.service.repos;
 
+import io.proj3ct.telegramjokebot.model.PuriPuns;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
