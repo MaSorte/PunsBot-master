@@ -64,12 +64,11 @@ public class RestControll {
     }
 
     @GetMapping("/randpun")
-    public ResponseEntity<String> rand_pun() {
+    public Optional<PuriPuns> rand_pun() {
         long pp = punService.getPunCount(); //получаем общее количество
         Random random = new Random();
         long randomNumber = random.nextInt((int) pp);
-        String pun = String.valueOf(punService.getPunById(randomNumber)); //передаем и получаем
-        return ResponseEntity.ok(pun);
+        return punService.getPunById(randomNumber);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -83,7 +82,7 @@ public class RestControll {
     }
 
     @PostMapping("/add")
-    @PreAuthorize("hasAuthority('PLACE_ORDERS')")//проверка авторизации???
+    @PreAuthorize("hasAuthority('PLACE_ORDERS')")
     public ResponseEntity<String> addPun(@RequestBody PuriPuns pun) {
         if (punService.registerPun(pun)) {
             return ResponseEntity.ok("Шутка добавлена.");
