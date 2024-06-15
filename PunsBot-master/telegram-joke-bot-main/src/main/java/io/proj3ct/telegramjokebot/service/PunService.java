@@ -3,10 +3,12 @@ package io.proj3ct.telegramjokebot.service;
 import io.proj3ct.telegramjokebot.model.PuriPuns;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @Service
 @Controller
 public interface PunService {

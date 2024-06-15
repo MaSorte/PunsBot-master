@@ -11,4 +11,5 @@ public interface PunRepository extends JpaRepository<PuriPuns, Long> {
 
     @Query("SELECT p FROM PuriPuns p ORDER BY p.rating DESC LIMIT 5")
     List<PuriPuns> Top5ByRating();
+
 }
